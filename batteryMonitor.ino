@@ -8,7 +8,7 @@ int inputVoltage = 0;
 const char* cSSID="Dev";
 const char* cPASS="1234567890";
 
-String sPostAddr = "http://cee7ae6f.ngrok.io/api/device/updateDeviceStatus/1";
+String sPostAddr = "http://0832434a.ngrok.io/api/device/updateDeviceStatus/MAC-123";
 String sPostValue = "";
 
 int led30 = 4;
@@ -38,10 +38,10 @@ String getStatusBattery() {
  String sBattStatus = "";
  int iBatteryStatusRead = digitalRead(batteryStatus);
  Serial.println(iBatteryStatusRead);
- if (iBatteryStatus == HIGH) {
-    sBattStatus = "1";
- } else {
+ if (iBatteryStatusRead == LOW) {
     sBattStatus = "0";
+ } else {
+    sBattStatus = "1";
  }
  
  return sBattStatus;
@@ -96,7 +96,7 @@ void loop() {
     http.end(); 
   }
    
-  delay(10000);
+  delay(5000);
 }
 
 
